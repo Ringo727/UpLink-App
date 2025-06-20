@@ -1,9 +1,25 @@
 import SwiftUI
 
 struct StartupView: View {
+    
+    @State private var colorCycle = false
+    
     var body: some View {
         ZStack {
-            Color("BackgroundColor").edgesIgnoringSafeArea(.all)
+            LinearGradient(
+                        gradient: Gradient(colors: [
+                            colorCycle ? Color("BackgroundColor") : Color("BackgroundAccent"),
+                            colorCycle ? Color("BackgroundAccent") : Color("BackgroundColor")
+                        ]),
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                    .animation(.easeInOut(duration: 10).repeatForever(autoreverses: true), value: colorCycle)
+                    .edgesIgnoringSafeArea(.all)
+                    .onAppear {
+                        colorCycle = true
+                    }
+
             VStack(spacing: 30) {
                 
                 Spacer()
@@ -19,6 +35,12 @@ struct StartupView: View {
                         .font(.custom("Rubik", size: 60))
                         .foregroundColor(Color("ForegroundColor"))
                 }
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color("BackgroundAccent"), lineWidth: 4)
+                )
+
 
                 Spacer()
                 
