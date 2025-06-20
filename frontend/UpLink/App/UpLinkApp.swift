@@ -1,9 +1,6 @@
-//
-//  UpLinkApp.swift
-//  UpLink
-//
-//  Created by Logan Lucas on 6/19/25.
-//
+// UpLinkApp.swift
+
+// the starting point of the app; calls RootView to handle routing
 
 import SwiftUI
 
@@ -11,7 +8,7 @@ import SwiftUI
 struct UpLinkApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
         }
     }
 }
