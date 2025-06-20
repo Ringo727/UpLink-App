@@ -1,0 +1,16 @@
+# .golangci.yml
+
+run:
+  timeout: 5m
+
+linters:
+  enable:
+    - govet
+    - staticcheck
+    - errcheck
+    - gosimple
+    - unused
+    - deadcode
+
+issues:
+  exclude-use-default: false
