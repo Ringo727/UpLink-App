@@ -8,8 +8,9 @@ struct CustomButton: View {
 
     var body: some View {
         Text(title)
+            .frame(maxWidth: .infinity)
             .font(.custom("Rubik", size: 24))
-            .foregroundColor(.white)
+            .foregroundColor(Color("ForegroundColor"))
             .shadow(color: Color("ButtonShadow").opacity(0.5), radius: 2, x: 0, y: 1)
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
