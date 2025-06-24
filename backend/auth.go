@@ -4,7 +4,28 @@ import (
 	"errors"
 	"golang.org/x/crypto/bcrypt"
 	"log"
+	"regexp"
 )
+
+func validateUsername(username string) error {
+
+	if len(username) < 3 || len(username) > 20 {
+		return errors.New("Username must be between 3 and 20 characters")
+	}
+
+	matched, err := regexp.MatchString(`^[a-zA-Z0-9_]+$`, username)
+	if err != nil {
+		return errors.New("Server error while validating username")
+	}
+
+	if !matched {
+		return errors.New("Username can only contain letters, numbers, and underscores")
+	}
+
+	// TODO: Make final check to see if username exists in the database
+
+	return nil
+}
 
 func validatePassword(password string) error {
 	length := len([]byte(password))
