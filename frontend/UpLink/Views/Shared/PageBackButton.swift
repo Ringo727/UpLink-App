@@ -10,6 +10,7 @@ struct PageBackButton : View {
             }) {
                 Image(systemName: "chevron.left")
                     .foregroundStyle(Color("ForegroundColor"))
+                    .fontWeight(.bold)
             }
     }
 }

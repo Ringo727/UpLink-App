@@ -30,10 +30,11 @@ struct StartupView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 60, height: 60)
-                            .foregroundColor(Color("ButtonColor"))
+                            .foregroundStyle(Color("ButtonShadow"), Color("ButtonColor"))
                         
                         Text("UpLink")
                             .font(.custom("Rubik", size: 60))
+                            .fontWeight(.bold)
                             .foregroundColor(Color("ForegroundColor"))
                     }
                     .padding()
@@ -45,9 +46,9 @@ struct StartupView: View {
                     
                     Spacer()
                     
-                    CustomButton(title: "Sign Up", destination: AnyView(SignUpView()), action: nil).frame(width: 300)
+                    CustomButton(title: "SIGN UP", destination: AnyView(SignUpView()), action: nil).frame(width: 300)
                     
-                    CustomButton(title: "Log In", destination: AnyView(LoginView()), action: nil).frame(width: 300)
+                    CustomButton(title: "I HAVE AN ACCOUNT", destination: AnyView(LoginView()), action: nil).frame(width: 300)
                         .padding(.bottom, 60)
                     
                 }

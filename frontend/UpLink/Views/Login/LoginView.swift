@@ -2,7 +2,12 @@ import SwiftUI
 
 struct LoginView: View {
     
+    // for background animation
     @State private var colorCycle = false
+    
+    // tracking user input
+    @State private var inputEmail = ""
+    @State private var inputPassword = ""
     
     var body: some View {
         ZStack {
@@ -27,9 +32,10 @@ struct LoginView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 40, height: 40)
-                            .foregroundColor(Color("ButtonColor"))
+                            .foregroundStyle(Color("ButtonColor"), Color("ForegroundColor"))
                         Text("Log In")
                             .font(.custom("Rubik", size: 40))
+                            .fontWeight(.bold)
                             .foregroundStyle(Color("ForegroundColor"))
                     }
                     VStack(spacing: 10) {
@@ -43,11 +49,12 @@ struct LoginView: View {
 
                             TextField(
                                 "Email",
-                                text: .constant(""),
+                                text: $inputEmail,
                                 prompt: Text("Email")
                                     .foregroundStyle(Color("ForegroundColor").opacity(0.6))
                             )
                             .textFieldStyle(CustomTextFieldStyle())
+                            .textInputAutocapitalization(.never)
                         }
 
                         HStack(spacing: 10) {
@@ -60,14 +67,15 @@ struct LoginView: View {
 
                             SecureField(
                                 "Password",
-                                text: .constant(""),
+                                text: $inputPassword,
                                 prompt: Text("Password")
                                     .foregroundStyle(Color("ForegroundColor").opacity(0.6))
                             )
                             .textFieldStyle(CustomTextFieldStyle())
+                            .textInputAutocapitalization(.never)
                         }
 
-                        CustomButton(title: "Log In", destination: nil, action: {
+                        CustomButton(title: "LOG IN", destination: nil, action: {
                             print("Button tapped") // change this to make a call to the backend database to log in a user
                         }).padding(.top, 8)
                     }

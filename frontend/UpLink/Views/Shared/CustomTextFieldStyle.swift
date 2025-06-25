@@ -15,5 +15,6 @@ struct CustomTextFieldStyle: TextFieldStyle {
             )
             .font(.custom("Rubik", size: 18))
             .foregroundColor(Color("ForegroundColor"))
+            .fontWeight(.medium)
     }
 }

@@ -2,7 +2,13 @@ import SwiftUI
 
 struct SignUpView: View {
     
+    // for background animation
     @State private var colorCycle = false
+    
+    // tracking user input
+    @State private var inputUsername = ""
+    @State private var inputEmail = ""
+    @State private var inputPassword = ""
     
     var body: some View {
         ZStack {
@@ -26,9 +32,10 @@ struct SignUpView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 40, height: 40)
-                        .foregroundColor(Color("ButtonColor"))
+                        .foregroundStyle(Color("ButtonColor"), Color("ForegroundColor"))
                     Text("Sign Up")
                         .font(.custom("Rubik", size: 40))
+                        .fontWeight(.bold)
                         .foregroundStyle(Color("ForegroundColor"))
                 }
                 VStack(spacing: 10) {
@@ -42,11 +49,12 @@ struct SignUpView: View {
 
                         TextField(
                             "Username",
-                            text: .constant(""),
+                            text: $inputUsername,
                             prompt: Text("Username")
                                 .foregroundStyle(Color("ForegroundColor").opacity(0.6))
                         )
                         .textFieldStyle(CustomTextFieldStyle())
+                        .textInputAutocapitalization(.never)
                     }
 
                     HStack(spacing: 10) {
@@ -59,11 +67,12 @@ struct SignUpView: View {
 
                         TextField(
                             "Email",
-                            text: .constant(""),
+                            text: $inputEmail,
                             prompt: Text("Email")
                                 .foregroundStyle(Color("ForegroundColor").opacity(0.6))
                         )
                         .textFieldStyle(CustomTextFieldStyle())
+                        .textInputAutocapitalization(.never)
                     }
 
                     HStack(spacing: 10) {
@@ -76,14 +85,15 @@ struct SignUpView: View {
 
                         SecureField(
                             "Password",
-                            text: .constant(""),
+                            text: $inputPassword,
                             prompt: Text("Password")
                                 .foregroundStyle(Color("ForegroundColor").opacity(0.6))
                         )
                         .textFieldStyle(CustomTextFieldStyle())
+                        .textInputAutocapitalization(.never)
                     }
 
-                    CustomButton(title: "Sign Up", destination: nil, action: {
+                    CustomButton(title: "SIGN UP", destination: nil, action: {
                         print("Button tapped") // change this to make a call to the backend database to add a user
                     }).padding(.top, 8)
                 }
