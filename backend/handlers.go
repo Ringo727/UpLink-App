@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	// "fmt"
 	"net/http"
 	"strings"
@@ -29,8 +30,11 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 
 	// TODO: Create session or return token
 
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("Logged in successfully"))
+	json.NewEncoder(w).Encode(map[string]string{
+		"message": "User logged in successfully",
+	})
 }
 
 func registerHandler(w http.ResponseWriter, r *http.Request) {
@@ -71,7 +75,14 @@ func registerHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// TODO: Save cleanedUsername, cleanedEmail, and hashedPassword to DB
+	fmt.Println("cleanedEmail: ", cleanedEmail)
+	fmt.Println("cleanedUsername: ", cleanedUsername)
+	fmt.Println("hashed: ", hashed)
+	fmt.Println("unhashed: ", user.Password) // FOR TESTING ONLY
 
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("User registered successfully"))
+	json.NewEncoder(w).Encode(map[string]string{
+		"message": "User registered successfully",
+	})
 }

@@ -76,7 +76,7 @@ struct LoginView: View {
                         }
 
                         CustomButton(title: "LOG IN", destination: nil, action: {
-                            print("Button tapped") // change this to make a call to the backend database to log in a user
+                            loginUser(email: inputEmail, password: inputPassword)
                         }).padding(.top, 8)
                     }
                     .padding(16)

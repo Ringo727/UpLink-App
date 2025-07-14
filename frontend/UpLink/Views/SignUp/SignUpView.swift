@@ -211,7 +211,7 @@ struct SignUpView: View {
                             }
                         }
                         else {
-                            print("Button tapped") // change this to make a call to the backend database to add a user
+                            registerUser(username: inputUsername, email: inputEmail, password: inputPassword)
                         }
                     }).padding(.top, 8)
                     

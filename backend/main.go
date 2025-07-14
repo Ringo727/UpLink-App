@@ -11,11 +11,11 @@ import (
 func main() {
 	r := chi.NewRouter()
 
-	r.Post("/login", loginHandler)
-	r.Post("/register", registerHandler)
-
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
+
+	r.Post("/api/login", loginHandler)
+	r.Post("/api/register", registerHandler)
 
 	fmt.Println("Server started on http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", r))
