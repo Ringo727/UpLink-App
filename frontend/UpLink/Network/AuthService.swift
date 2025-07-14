@@ -44,6 +44,7 @@ func registerUser(username: String, email: String, password: String) {
     }.resume()
 }
 
+// sends a POST request to the server with an email and password as login information - the server then attempts to login and returns a response
 func loginUser(email: String, password: String) {
     guard let url = baseURL?.appendingPathComponent("login") else {
         print("invalid registration url")
@@ -77,6 +78,7 @@ func loginUser(email: String, password: String) {
         do {
             let authResponse = try JSONDecoder().decode(AuthResponse.self, from: data)
             print("login response: ", authResponse.message)
+            // TODO: actually login the user
         } catch {
             print("unable to decode response: ", error)
         }
