@@ -58,3 +58,6 @@ fastlane/test_output
 
 # SPM playground support
 .swiftpm/xcode/package.xcworkspace/xcuserdata/
+
+# Environment Variables
+.env
