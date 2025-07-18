@@ -34,7 +34,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Database connection test failed: %v", err)
 	}
-	fmt.Println("Database connection test succeeded:", result)
+	fmt.Println("Database connection test succeeded.")
 
 	defer dbpool.Close()
 
@@ -43,7 +43,7 @@ func main() {
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
 
-	r.Post("/api/login", loginHandler)
+	r.Post("/api/login", loginHandler(dbpool))
 	r.Post("/api/register", registerHandler(dbpool))
 
 	fmt.Println("Server started on http://localhost:8080")
